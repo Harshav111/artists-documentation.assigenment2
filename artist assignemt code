@@ -1,0 +1,125 @@
+CREATE TABLE artistnames1( slno Int, artistname varchar(20));
+insert into artistnames1(slno,artistname)values(1,'micheal');
+insert into artistnames1(slno,artistname)values(2,'ilayaraja');
+insert into artistnames1(slno,artistname)values(3,'arrahman');
+insert into artistnames1(slno,artistname)values(4,'anirudh');
+insert into artistnames1(slno,artistname)values(5,'sidsriram');
+				  
+
+select*from artistnames1
+					  
+				  	  
+				  
+CREATE TABLE artistdetails( slno int, name varchar(30) PRIMARY KEY NOT NULL, birthplace varchar(20) NOT NULL, age int NOT NULL CHECK (age > 0), style varchar(20) NOT NULL );		  
+
+insert into artistdetails( slno,name,birthplace,age,style)values(1,'michealjackson','jerusalem',19,'popmusic');
+insert into artistdetails( slno,name,birthplace,age,style)values(2,'ilayaraja','tamilnadu',79,'classic');
+insert into artistdetails( slno,name,birthplace,age,style)values(3,'arrahman','tamilnadu',49,'classcialwestern');
+insert into artistdetails( slno,name,birthplace,age,style)values(4,'anirudh','tamilnadu',33,'modernwestern');
+insert into artistdetails( slno,name,birthplace,age,style)values(5,'sidsriram','america',32,'slagish');				
+select*from artistdetails
+				  
+CREATE TABLE customartist( cust_id int , name varchar(40) , address varchar(60) , 
+amount int);
+					  
+insert into customartist(cust_id,name,address,amount)values(1,'michealjackson','no_1925newjersey ',100000);
+insert into customartist(cust_id,name,address,amount)values(2,'ilayaraja','no19najikuppan',60000);
+insert into customartist(cust_id,name,address,amount)values(3,'arrahman','no25chennai',1000000);
+insert into customartist(cust_id,name,address,amount)values(4,'anirudh','no24sowkarpet',90000);					  
+insert into customartist(cust_id,name,address,amount)values(5,'sidsriram','no1925chicago',19900);
+ 
+ select*from customartist
+
+
+select avg(amount)from customartist;
+
+
+select count (amount)from customartist;
+
+
+
+select sum(amount)from customartist;
+
+#and operation
+
+select *from customartist where name='arrahman'and amount=1000000;
+
+#or operation
+
+select *from customartist where name='ilayaraja'OR cust_id=2;
+
+#ADDING COLUMN
+
+ALTER TABLE  customartist add rating float;
+
+#drop column
+
+alter table customartist  drop column rating;
+
+CREATE TABLE customartist2( cust_id int , name varchar(40) , address varchar(60) , 
+amount int);
+					  
+insert into customartist2(cust_id,name,address,amount)values(1,'michealjackson','no_1925-americanewjersey ',100000);
+insert into customartist2(cust_id,name,address,amount)values(2,'ilayaraja','no19 -thanjavurnajikuppan',60000);
+insert into customartist2(cust_id,name,address,amount)values(3,'arrahman','no25-maylaporechennai',1000000);
+insert into customartist2(cust_id,name,address,amount)values(4,'anirudh','no24-londonsowkarpet',90000);					  
+insert into customartist2(cust_id,name,address,amount)values(5,'sidsriram','no1925-live for death chicago',19900);
+
+select *from customartist2
+
+#inner join
+
+select customartist.name,customartist.address,customartist2.name,customartist2.address  
+from customartist
+inner join customartist2
+on customartist2.address = customartist2.address;
+
+
+#full join
+select customartist.name,customartist.address,customartist2.name,customartist2.address  
+from customartist
+full join customartist2
+on customartist2.address = customartist2.address;
+
+
+#left join
+
+select customartist.name,customartist.address,customartist2.name,customartist2.address  
+from customartist
+left join customartist2
+on customartist2.address = customartist2.address;
+
+#right join
+select customartist.name,customartist.address,customartist2.name,customartist2.address  
+from customartist
+right join customartist2
+on customartist2.address = customartist2.address;
+
+#left outer join
+
+select customartist.name,customartist.address,customartist2.name,customartist2.address  
+from customartist
+left outer join customartist2
+on customartist2.address = customartist2.address;
+
+#right outer join
+
+select customartist.name,customartist.address,customartist2.name,customartist2.address  
+from customartist
+right outer join customartist2
+on customartist2.address = customartist2.address;
+
+#full outer join
+
+select customartist.name,customartist.address,customartist2.name,customartist2.address  
+from customartist
+full outer join customartist2
+on customartist2.address = customartist2.address;
+
+#desc
+
+select *from customartist order by amount desc;
+
+#asc
+
+select *from customartist order by amount asc;
